@@ -27,7 +27,7 @@ def checkout(skus: str) -> int:
     total_skus = defaultdict(int)
 
     for sku in skus:
-        if sku not in "ABCDE":
+        if sku not in "ABCDEF":
             return -1
         total_skus[sku] += 1
 
@@ -52,8 +52,3 @@ def checkout(skus: str) -> int:
     total_cost += cost_f(total_skus["F"])
 
     return total_cost
-
-
-
-
-

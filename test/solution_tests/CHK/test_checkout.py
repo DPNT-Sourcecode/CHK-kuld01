@@ -24,8 +24,6 @@ def test_sum_f():
     assert 0 == checkout_solution.cost_f(0)
 
 def test_checkout():
-    result = checkout_solution.checkout("BAAAABBCDEE")
-    expected = 340
+    result = checkout_solution.checkout("BAAAABBCDEEFFF")
+    expected = 360
     assert result == expected
-
-
