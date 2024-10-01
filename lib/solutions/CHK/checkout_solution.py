@@ -2,5 +2,6 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
-def checkout(skus):
-    raise NotImplementedError()
+def checkout(skus: str) -> int:
+    sku_list = skus.split(',')
+
