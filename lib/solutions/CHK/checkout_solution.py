@@ -1,6 +1,6 @@
 from collections import defaultdict
 import attrs
-from typing import Protocol, List
+from typing import Protocol, List, Dict
 # noinspection PyUnusedLocal
 # skus = unicode string
 
@@ -15,36 +15,6 @@ class BuyOffer(Protocol):
     def calculate_cost(self, quantity: int) -> int:
         pass
 
-@attrs.define()
-class SingleBuyOffer:
-    single_price: int
-    
-    def calculate_cost(self, quantity: int) -> int:
-        return self.single_price * quantity
-
-@attrs.define()
-class DoubleBuyOffer:
-    single_price: int
-    double_price: int
-    
-    def calculate_cost(self, quantity: int) -> int:
-        cost = self.double_price * (count // 2)
-        cost += self.single_price * ( count % 2)
-        return cost
-
-
-@attrs.define()
-class TripleBuyOffer:
-    single_price: int
-    double_price: int
-    triple_price: int
-    
-
-    def calculate_cost(self, quantity: int) -> int:
-        cost = self.triple_price * (quantity // 5)
-        cost += self.double_price * ((quantity % 5) // 3)
-        cost += self.single_price * ((quantity % 5) % 3)
-        return cost
 
 @attrs.define()
 class MultiBuyOffer:
@@ -60,8 +30,25 @@ class MultiBuyOffer:
         return cost
 
 
+@attrs.define()
+class FreeBuyOffer:
+    price: Price
+
+    def calculate_cost(self, quantity: int) -> int:
+        cost = price.price * (quantity - (quantity // price.quantity))
+        return cost
+
+
+@attrs.define()
 class OfferRegistry:
-    offers = List[BuyOffer]
+    offers = Dict[str, BuyOffer]
+
+    def calculate_cost(self, skus: dict) -> int:
+        cost = 0
+        for sku, quantity in skus.items():
+            cost += self.offers[sku].calculate_cost(quantity)
+        return cost
+
 
 # def cost_a(quantity: int) -> int:
 #     total_cost = 200 * (count // 5)
@@ -112,4 +99,5 @@ def checkout(skus: str) -> int:
     total_cost += cost_f(total_skus["F"])
 
     return total_cost
+
 
