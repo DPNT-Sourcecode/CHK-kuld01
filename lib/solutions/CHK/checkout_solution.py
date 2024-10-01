@@ -2,6 +2,17 @@ from collections import defaultdict
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+def cost_a(count: int) -> int:
+    total_cost = 130 * (count // 3)
+    total_cost += 50 * (count % 3)
+    return total_cost
+
+def cost_b(count: int) -> int:
+    total_cost = 45 * (count // 2)
+    total_cost += 30 * ( count % 2)
+    return total_cost
+
 def checkout(skus: str) -> int:
     sku_list = skus.split(",")
 
@@ -15,12 +26,10 @@ def checkout(skus: str) -> int:
     total_cost = 0
 
     # A cost
-    total_cost += 130 * total_skus["A"] // 3
-    total_cost += 50 * (total_skus["A"] - total_skus["A"] % 3)
+    total_cost += cost_a(total_skus["A"])
 
     # B cost
-    total_cost += 45 * total_skus["B"] // 2
-    total_cost += 30 * (total_skus["B"] - total_skus["B"] % 2)
+    total_cost += cost_b(total_skus["B"])
 
     # C cost
     total_cost += 20 * total_skus["C"]
@@ -29,6 +38,7 @@ def checkout(skus: str) -> int:
     total_cost += 15 * total_skus["D"]
 
     return total_cost
+
 
 
 
