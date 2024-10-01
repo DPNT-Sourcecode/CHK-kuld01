@@ -52,7 +52,7 @@ class MultiBuyOffer:
 
     def calculate_cost(self, quantity: int) -> int:
         cost = 0
-        self.prices.sort(reverse=True) # works as attrs classes orderable
+        self.prices.sort(key=lambda x: x.quantity, reverse=True)
         for price in self.prices:
             quantity_at_price = quantity // price.quantity
             cost += quantity_at_price * price.price
@@ -111,4 +111,3 @@ def checkout(skus: str) -> int:
     total_cost += cost_f(total_skus["F"])
 
     return total_cost
-
