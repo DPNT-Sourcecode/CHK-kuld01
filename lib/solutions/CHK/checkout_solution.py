@@ -1,7 +1,11 @@
 from collections import defaultdict
+import attrs
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+class MultiBuy:
+
 
 def cost_a(count: int) -> int:
     total_cost = 200 * (count // 5)
@@ -52,3 +56,4 @@ def checkout(skus: str) -> int:
     total_cost += cost_f(total_skus["F"])
 
     return total_cost
+
