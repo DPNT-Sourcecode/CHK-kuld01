@@ -14,7 +14,10 @@ def checkout(skus: str) -> int:
 
     total_cost = 0
 
-    total_skus[]
+    # A cost
+    total_cost += 130 * total_skus["A"] // 3
+    total_cost += 50 * (total_skus["A"] - total_skus["A"] % 3)
+
 
 
 
