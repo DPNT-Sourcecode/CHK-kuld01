@@ -33,3 +33,10 @@ class TestMultiBuyOffer:
 
     def test_calculate_cost(self):
         assert 300 == checkout_solution.MultiBuyOffer([checkout_solution.Price(1,100)]).calculate_cost(3)
+        assert 450 == checkout_solution.MultiBuyOffer(
+            [
+                checkout_solution.Price(1,100),
+                checkout_solution.Price(3,130),
+                checkout_solution.Price(5,200),
+             ]
+        ).calculate_cost(11)
