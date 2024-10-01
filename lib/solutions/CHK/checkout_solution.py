@@ -57,12 +57,11 @@ class MultiBuyOffer:
             quantity_at_price = quantity // price.quantity
             cost += quantity_at_price * price.price
             quantity -= quantity_at_price * price.quantity
-            print(quantity_at_price)
-            print(price.quantity)
         return cost
 
+
 class OfferRegistry:
-    pass
+    offers = List[BuyOffer]
 
 # def cost_a(quantity: int) -> int:
 #     total_cost = 200 * (count // 5)

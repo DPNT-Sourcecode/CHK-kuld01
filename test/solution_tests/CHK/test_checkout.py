@@ -32,7 +32,7 @@ from solutions.CHK import checkout_solution
 class TestMultiBuyOffer:
 
     def test_calculate_cost(self):
-        # assert 300 == checkout_solution.MultiBuyOffer([checkout_solution.Price(1,100)]).calculate_cost(3)
+        assert 300 == checkout_solution.MultiBuyOffer([checkout_solution.Price(1,100)]).calculate_cost(3)
         assert 450 == checkout_solution.MultiBuyOffer(
             [
                 checkout_solution.Price(1,50),
@@ -40,3 +40,9 @@ class TestMultiBuyOffer:
                 checkout_solution.Price(5,200),
              ]
         ).calculate_cost(11)
+        assert 75 == checkout_solution.MultiBuyOffer(
+            [
+                checkout_solution.Price(1,30),
+                checkout_solution.Price(2,45),
+             ]
+        ).calculate_cost(3)
