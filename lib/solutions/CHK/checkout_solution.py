@@ -4,8 +4,9 @@ from collections import defaultdict
 # skus = unicode string
 
 def cost_a(count: int) -> int:
-    total_cost = 130 * (count // 3)
-    total_cost += 50 * (count % 3)
+    total_cost = 150 * (count // 5)
+    total_cost += 130 * ((count % 5) // 3)
+    total_cost += 130 * ((count % 5) % 3)
     return total_cost
 
 def cost_b(count: int) -> int:
@@ -37,3 +38,4 @@ def checkout(skus: str) -> int:
     total_cost += 15 * total_skus["D"]
 
     return total_cost
+
