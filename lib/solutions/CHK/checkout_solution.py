@@ -14,11 +14,10 @@ def cost_b(count: int) -> int:
     return total_cost
 
 def checkout(skus: str) -> int:
-    sku_list = skus.split(",")
 
     total_skus = defaultdict(int)
 
-    for sku in sku_list:
+    for sku in skus:
         if sku not in "ABCD":
             return -1
         total_skus[sku] += 1
@@ -38,8 +37,3 @@ def checkout(skus: str) -> int:
     total_cost += 15 * total_skus["D"]
 
     return total_cost
-
-
-
-
-
