@@ -12,6 +12,7 @@ def test_sum_b():
     assert 75 == checkout_solution.cost_b(3, 1)
     assert 45 == checkout_solution.cost_b(3, 2)
     assert 45 == checkout_solution.cost_b(3, 3)
+    assert 0 == checkout_solution.cost_b(0, 2)
     assert 0 == checkout_solution.cost_b(0, 0)
 
 def test_checkout():

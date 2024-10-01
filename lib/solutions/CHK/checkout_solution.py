@@ -12,6 +12,8 @@ def cost_a(count: int) -> int:
 def cost_b(count: int, count_e: int) -> int:
     # remove 1 count per 2 E
     count -= count_e // 2
+    if count < 0:
+        return 0
     total_cost = 45 * (count // 2)
     total_cost += 30 * ( count % 2)
     return total_cost
@@ -43,4 +45,5 @@ def checkout(skus: str) -> int:
     total_cost += 40 * total_skus["E"]
 
     return total_cost
+
 
