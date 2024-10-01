@@ -56,7 +56,9 @@ class MultiBuyOffer:
         for price in self.prices:
             quantity_at_price = quantity // price.quantity
             cost += quantity_at_price * price.price
-            quantity -= quantity_at_price
+            quantity -= quantity_at_price * price.quantity
+            print(quantity_at_price)
+            print(price.quantity)
         return cost
 
 class OfferRegistry:
@@ -111,3 +113,4 @@ def checkout(skus: str) -> int:
     total_cost += cost_f(total_skus["F"])
 
     return total_cost
+
