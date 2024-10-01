@@ -20,11 +20,12 @@ def test_sum_f():
     assert 20 == checkout_solution.cost_f(2)
     assert 20 == checkout_solution.cost_f(3)
     assert 30 == checkout_solution.cost_f(4)
-    assert 70 == checkout_solution.cost_f(11)
+    assert 80 == checkout_solution.cost_f(11)
     assert 0 == checkout_solution.cost_f(0)
 
 def test_checkout():
     result = checkout_solution.checkout("BAAAABBCDEE")
     expected = 340
     assert result == expected
+
 

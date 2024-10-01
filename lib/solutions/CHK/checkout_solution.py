@@ -19,7 +19,7 @@ def cost_b(count: int, count_e: int) -> int:
     return total_cost
 
 def cost_f(count: int) -> int:
-    total_cost = 10 * (count - (count // 2))
+    total_cost = 10 * (count - (count // 3))
     return total_cost
 
 def checkout(skus: str) -> int:
@@ -52,6 +52,7 @@ def checkout(skus: str) -> int:
     total_cost += cost_f(total_skus["F"])
 
     return total_cost
+
 
 
 
