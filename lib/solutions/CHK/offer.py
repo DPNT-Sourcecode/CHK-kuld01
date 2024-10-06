@@ -91,6 +91,7 @@ class CrossBuyOffer(Offer):
         prices = list(self.products.values())
         prices.sort()
         for price in prices:
+            if
             if remaining_quantity == 0:
                 break
             cost += price
@@ -113,4 +114,5 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 

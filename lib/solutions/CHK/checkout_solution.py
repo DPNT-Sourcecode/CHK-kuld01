@@ -30,7 +30,7 @@ def checkout(skus: str) -> int:
         offer.MultiBuyOffer(product_code="H", prices=[offer.Price(1, 10), offer.Price(5, 45), offer.Price(10, 80)]),
         offer.MultiBuyOffer(product_code="I", prices=[offer.Price(1, 35)]),
         offer.MultiBuyOffer(product_code="J", prices=[offer.Price(1, 60)]),
-        offer.MultiBuyOffer(product_code="K", prices=[offer.Price(1, 80), offer.Price(2, 150)]),
+        offer.MultiBuyOffer(product_code="K", prices=[offer.Price(1, 70), offer.Price(2, 120)]),
         offer.MultiBuyOffer(product_code="L", prices=[offer.Price(1, 90)]),
         offer.MultiBuyOffer(product_code="M", prices=[offer.Price(1, 15)]),
         offer.FreeCrossBuyOffer(product_code="N", price=40, free_product_code="M", trigger_quantity=3),
@@ -54,4 +54,5 @@ def checkout(skus: str) -> int:
     )
 
     return offer_registry.calculate(basket)
+
 
