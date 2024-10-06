@@ -1,19 +1,9 @@
 from collections import defaultdict
 import attrs
 from typing import Protocol, List, Dict
-from collections import UserDict
+from .basket import Basket
 # noinspection PyUnusedLocal
 # skus = unicode string
-x = {}
-class Basket(UserDict):
-    def __getitem__(self, key):
-        if value < 0:
-            value = 0
-        super().__setitem__(key, 0)
-    def __setitem__(self, key, value):
-        if value < 0:
-            value = 0
-        super().__setitem__(key, 0)
 
 
 
@@ -112,5 +102,6 @@ def checkout(skus: str) -> int:
     total_cost += cost_f(total_skus["F"])
 
     return total_cost
+
 
 
