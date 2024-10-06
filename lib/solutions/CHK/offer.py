@@ -8,7 +8,7 @@ class Price:
     quantity: int
     price: int
 
-
+@attrs.define
 class BuyOffer():
     product_code: str
 
@@ -65,7 +65,7 @@ class CrossBuyOffer(BuyOffer):
 class OfferRegistry:
     offers = List[BuyOffer]
 
-    def calculate_cost(self, basket: Basket) -> int:
+    def calculate(self, basket: Basket) -> int:
         cost = 0
 
         for offer in self.offers:
@@ -76,3 +76,4 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+

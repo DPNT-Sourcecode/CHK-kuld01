@@ -15,13 +15,10 @@ def checkout(skus: str) -> int:
         total_skus[sku] += 1
 
     offer_registry = offer.OfferRegistry(
-        [
-        offer.MultiBuyOffer(product_code="A", prices=[offer.Price(1, 50), offer.Price(3, 130), offer.Price(5, 200)]),
-        offer.MultiBuyOffer(product_code="A", prices=[offer.Price(1, 50), offer.Price(3, 130), offer.Price(5, 200)]),
-        ]
     )
 
-    offer_registry.calculate_cost()
+    offer_registry.calculate()
 
     return total_cost
+
 
