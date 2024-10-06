@@ -32,6 +32,13 @@ import lib.solutions.CHK.offer
 #     assert result == expected
 #
 #
+
+def test_checkout():
+    skus = ""
+    skus += 9 * "A"
+    skus += 3 * "E"
+    skus += 4 * "F"
+
 class TestMultiBuyOffer:
 
     def test_calculate_cost(self):

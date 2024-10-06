@@ -47,6 +47,3 @@ def checkout(skus: str) -> int:
     )
 
     return offer_registry.calculate()
-
-
-

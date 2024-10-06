@@ -64,8 +64,3 @@ class TestCrossBuyOffer:
             trigger_quantity=2
         ).calculate_cost(basket)
         assert cost == 200
-
-
-
-
-
