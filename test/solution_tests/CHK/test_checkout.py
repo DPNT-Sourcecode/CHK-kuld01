@@ -35,24 +35,19 @@ import lib.solutions.CHK.offer
 
 def test_checkout():
     skus = ""
-    skus += 9 * "A"
-    skus += 3 * "E"
-    skus += 4 * "F"
+    skus += 9 * "A"  # 380
+    skus += 2 * "B"  # 45
+    skus += 3 * "E"  # 120 - 15 (1B)
+    skus += 4 * "F"  # 30
+    skus += 2 * "Z"  # 100
 
-class TestMultiBuyOffer:
+    cost = checkout_solution.checkout(skus)
 
-    def test_calculate_cost(self):
-        assert 300 == lib.solutions.CHK.offer.MultiBuyOffer([lib.solutions.CHK.offer.Price(1, 100)]).calculate_cost(3)
-        assert 450 == lib.solutions.CHK.offer.MultiBuyOffer(
-            [
-                lib.solutions.CHK.offer.Price(1, 50),
-                lib.solutions.CHK.offer.Price(3, 130),
-                lib.solutions.CHK.offer.Price(5, 200),
-             ]
-        ).calculate_cost(11)
-        assert 75 == lib.solutions.CHK.offer.MultiBuyOffer(
-            [
-                lib.solutions.CHK.offer.Price(1, 30),
-                lib.solutions.CHK.offer.Price(2, 45),
-             ]
-        ).calculate_cost(3)
+    assert cost == 690
+
+def test_checkout_invalid():
+    skus = "ABC~"
+
+    cost = checkout_solution.checkout(skus)
+
+    assert cost == -1

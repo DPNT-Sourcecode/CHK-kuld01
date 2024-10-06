@@ -2,6 +2,7 @@ from collections import defaultdict
 import attrs
 from typing import Protocol, List, Dict
 from . import offer
+from .basket import Basket
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -13,6 +14,8 @@ def checkout(skus: str) -> int:
     for sku in skus:
         if sku not in VALID_SKUS:
             return -1
+
+    basket = Basket.from_string(skus)
 
     offer_registry = offer.OfferRegistry(
         [
@@ -46,4 +49,5 @@ def checkout(skus: str) -> int:
         ]
     )
 
-    return offer_registry.calculate()
+    return offer_registry.calculate(basket)
+
