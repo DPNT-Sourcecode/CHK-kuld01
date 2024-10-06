@@ -14,4 +14,3 @@ stomp-py==8.1.2
 tdl-client-python==0.27.13
 urllib3==2.2.3
 websocket-client==1.8.0
-

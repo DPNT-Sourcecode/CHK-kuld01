@@ -76,6 +76,3 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
-
-
-

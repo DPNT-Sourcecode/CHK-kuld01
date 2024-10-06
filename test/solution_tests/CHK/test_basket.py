@@ -22,4 +22,3 @@ class TestBasket:
         instance = basket.Basket.from_string("AAB")
         assert instance['A'] == 2
         assert instance['B'] == 1
-
