@@ -43,7 +43,7 @@ def test_checkout():
 
     cost = checkout_solution.checkout(skus)
 
-    assert cost == 690
+    assert cost == 660
 
 def test_checkout_invalid():
     skus = "ABC~"
@@ -51,3 +51,4 @@ def test_checkout_invalid():
     cost = checkout_solution.checkout(skus)
 
     assert cost == -1
+

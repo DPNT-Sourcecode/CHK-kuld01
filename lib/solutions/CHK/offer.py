@@ -44,7 +44,7 @@ class FreeBuyOffer(BuyOffer):
         # divide into sets
         cost = self.trigger_quantity * self.price * (quantity // (self.trigger_quantity + 1))
         # calculate remainder
-        cost += self.price * (quantity % self.trigger_quantity + 1)
+        cost += self.price * (quantity % (self.trigger_quantity + 1))
         return cost
 
 
@@ -80,3 +80,4 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
