@@ -8,8 +8,14 @@ class Price:
     quantity: int
     price: int
 
+class Offer:
+
+    def calculate_cost(self, basket: Basket) -> int:
+        pass
+
+
 @attrs.define
-class BuyOffer:
+class BuyOffer(Offer):
     product_code: str
 
     def _get_quantity(self, basket: Basket):
@@ -67,8 +73,8 @@ class FreeCrossBuyOffer(BuyOffer):
 
 
 @attrs.define()
-class CrossBuyOffer(BuyOffer):
-    products: Dict[str]
+class CrossBuyOffer(Offer):
+    products: Dict[str, int]
     trigger_quantity: int
     offer_price: int
 
@@ -81,16 +87,20 @@ class CrossBuyOffer(BuyOffer):
 
         remaining_quantity = total_quantity % self.trigger_quantity
 
-        self.products.sort(key=)
-
-        quantity = basket[self.product_code]
-        cost = self.price * quantity
+        # caclulate remaining quantity prices, favouring the customer
+        prices = list(self.products.values())
+        prices.sort()
+        for price in prices:
+            if remaining_quantity == 0:
+                break
+            cost += price
+            remaining_quantity -= 1
         return cost
 
 
 @attrs.define()
 class OfferRegistry:
-    offers: List[BuyOffer]
+    offers: List[Offer]
 
     def calculate(self, basket: Basket) -> int:
         cost = 0
@@ -103,3 +113,4 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
