@@ -69,14 +69,8 @@ class FreeCrossBuyOffer(BuyOffer):
 @attrs.define()
 class CrossBuyOffer(BuyOffer):
     products: Dict[str]
-    price: int
-    free_product_code: str
     trigger_quantity: int
-
-    def remove_free(self, basket: Basket) -> Basket:
-        quantity = basket[self.product_code]
-        basket[self.free_product_code] -= quantity // self.trigger_quantity
-        return basket
+    offer_price: int
 
     def calculate_cost(self, basket: Basket) -> int:
         quantity = basket[self.product_code]
@@ -99,5 +93,6 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 
 
