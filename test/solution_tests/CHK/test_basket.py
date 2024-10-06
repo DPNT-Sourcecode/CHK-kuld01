@@ -19,6 +19,7 @@ class TestBasket:
         assert instance['key'] == 1
 
     def test_from_string(self):
-        instance.from_string("AAB")
+        instance = basket.Basket.from_string("AAB")
         assert instance['A'] == 2
         assert instance['B'] == 1
+

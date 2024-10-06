@@ -50,7 +50,6 @@ class CrossBuyOffer(BuyOffer):
     free_product_code: str
     free_product_quantity_required: int
 
-
     def remove_free(self, basket: Basket) -> Basket:
         quantity = basket[self.product_code]
         basket[self.free_product_code] -= quantity // self.free_product_quantity_required
