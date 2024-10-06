@@ -36,21 +36,21 @@ class MultiBuyOffer(BuyOffer):
 
 @attrs.define()
 class FreeBuyOffer(BuyOffer):
-    price: Price
+    price: int
     trigger_quantity: int
 
     def calculate_cost(self, basket: Basket) -> int:
         quantity = basket[self.product_code]
         # divide into sets
-        cost = self.trigger_quantity * self.price.price * (quantity // (self.trigger_quantity + 1))
+        cost = self.trigger_quantity * self.price * (quantity // (self.trigger_quantity + 1))
         # calculate remainder
-        cost += self.price.price * (quantity % self.trigger_quantity + 1)
+        cost += self.price * (quantity % self.trigger_quantity + 1)
         return cost
 
 
 @attrs.define()
 class CrossBuyOffer(BuyOffer):
-    price: Price
+    price: int
     free_product_code: str
     trigger_quantity: int
 
@@ -61,7 +61,7 @@ class CrossBuyOffer(BuyOffer):
 
     def calculate_cost(self, basket: Basket) -> int:
         quantity = basket[self.product_code]
-        cost = self.price.price * (quantity - (quantity // self.price.quantity))
+        cost = self.price * quantity
         return cost
 
 
@@ -80,6 +80,7 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 
 
 

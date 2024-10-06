@@ -36,7 +36,7 @@ class TestFreeBuyOffer:
         basket["C"] = 4
         cost = offer.FreeBuyOffer(
             product_code="C",
-            price=offer.Price(1, 50),
+            price=50,
             trigger_quantity=2
         ).calculate_cost(basket)
         assert cost == 150
@@ -49,7 +49,7 @@ class TestCrossBuyOffer:
         basket["D"] = 3
         basket = offer.CrossBuyOffer(
             product_code="C",
-            price=offer.Price(1, 50),
+            price=50,
             free_product_code="D",
             trigger_quantity=2
         ).remove_free(basket)
@@ -59,11 +59,12 @@ class TestCrossBuyOffer:
         basket["C"] = 4
         cost = offer.CrossBuyOffer(
             product_code="C",
-            price=offer.Price(1, 50),
+            price=50,
             free_product_code="D",
             trigger_quantity=2
         ).calculate_cost(basket)
-        assert cost == 4
+        assert cost == 200
+
 
 
 
