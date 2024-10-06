@@ -1,5 +1,8 @@
 from solutions.CHK import checkout_solution
 
+import lib.solutions.CHK.offer
+
+
 # def test_sum_a():
 #     assert 450 == checkout_solution.cost_a(11)
 #     assert 500 == checkout_solution.cost_a(12)
@@ -32,17 +35,17 @@ from solutions.CHK import checkout_solution
 class TestMultiBuyOffer:
 
     def test_calculate_cost(self):
-        assert 300 == checkout_solution.MultiBuyOffer([checkout_solution.Price(1,100)]).calculate_cost(3)
-        assert 450 == checkout_solution.MultiBuyOffer(
+        assert 300 == lib.solutions.CHK.offer.MultiBuyOffer([lib.solutions.CHK.offer.Price(1, 100)]).calculate_cost(3)
+        assert 450 == lib.solutions.CHK.offer.MultiBuyOffer(
             [
-                checkout_solution.Price(1,50),
-                checkout_solution.Price(3,130),
-                checkout_solution.Price(5,200),
+                lib.solutions.CHK.offer.Price(1, 50),
+                lib.solutions.CHK.offer.Price(3, 130),
+                lib.solutions.CHK.offer.Price(5, 200),
              ]
         ).calculate_cost(11)
-        assert 75 == checkout_solution.MultiBuyOffer(
+        assert 75 == lib.solutions.CHK.offer.MultiBuyOffer(
             [
-                checkout_solution.Price(1,30),
-                checkout_solution.Price(2,45),
+                lib.solutions.CHK.offer.Price(1, 30),
+                lib.solutions.CHK.offer.Price(2, 45),
              ]
         ).calculate_cost(3)

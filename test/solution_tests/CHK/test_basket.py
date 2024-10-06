@@ -17,3 +17,8 @@ class TestBasket:
         instance['key'] -= 2
         instance['key'] += 1
         assert instance['key'] == 1
+
+    def test_from_string(self):
+        instance.from_string("AAB")
+        assert instance['A'] == 2
+        assert instance['B'] == 1

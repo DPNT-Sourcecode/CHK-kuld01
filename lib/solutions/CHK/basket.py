@@ -13,3 +13,11 @@ class Basket(UserDict):
         if value < 0:
             value = 0
         super().__setitem__(key, value)
+
+    @classmethod
+    def from_string(cls, skus: str):
+        basket = cls()
+        for sku in skus:
+            basket[sku] += 1
+        return basket
+
