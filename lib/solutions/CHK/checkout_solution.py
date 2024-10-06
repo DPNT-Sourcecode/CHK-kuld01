@@ -1,8 +1,17 @@
 from collections import defaultdict
 import attrs
 from typing import Protocol, List, Dict
+from collections import UserDict
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+class Basket(UserDict):
+    def __setitem__(self, key, value):
+        if value < 0:
+            value = 0
+        super().__setitem__(key, 0)
+
+
 
 @attrs.define()
 class Price:
@@ -99,3 +108,4 @@ def checkout(skus: str) -> int:
     total_cost += cost_f(total_skus["F"])
 
     return total_cost
+
