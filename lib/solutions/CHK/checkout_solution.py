@@ -38,15 +38,20 @@ def checkout(skus: str) -> int:
         offer.MultiBuyOffer(product_code="P", prices=[offer.Price(1, 50), offer.Price(5, 200)]),
         offer.MultiBuyOffer(product_code="Q", prices=[offer.Price(1, 30), offer.Price(3, 80)]),
         offer.FreeCrossBuyOffer(product_code="R", price=50, free_product_code="Q", trigger_quantity=3),
-        offer.MultiBuyOffer(product_code="S", prices=[offer.Price(1, 30)]),
-        offer.MultiBuyOffer(product_code="T", prices=[offer.Price(1, 20)]),
         offer.FreeBuyOffer(product_code="U", price=40, trigger_quantity=3),
         offer.MultiBuyOffer(product_code="V", prices=[offer.Price(1, 50), offer.Price(2, 90), offer.Price(3, 130)]),
         offer.MultiBuyOffer(product_code="W", prices=[offer.Price(1, 20)]),
-        offer.MultiBuyOffer(product_code="X", prices=[offer.Price(1, 90)]),
-        offer.MultiBuyOffer(product_code="Y", prices=[offer.Price(1, 10)]),
-        offer.MultiBuyOffer(product_code="Z", prices=[offer.Price(1, 50)]),
+        offer.CrossBuyOffer(products={
+            "S": 20,
+            "T": 20,
+            "X": 17,
+            "Y": 20,
+            "Z": 21,
+        },
+            trigger_quantity=3,
+            offer_price=45)
         ]
     )
 
     return offer_registry.calculate(basket)
+
