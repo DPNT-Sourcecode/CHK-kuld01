@@ -31,3 +31,17 @@ class TestMultiBuyOffer:
         assert cost == 450
 
 
+
+class TestFreeBuyOffer:
+
+    def test_calculate_cost(self, basket):
+        basket["C"] = 4
+        cost = offer.FreeBuyOffer(
+            product_code="C",
+            price=offer.Price(1, 50),
+            trigger_quantity=2
+        ).calculate_cost(basket)
+        assert cost == 150
+
+
+
