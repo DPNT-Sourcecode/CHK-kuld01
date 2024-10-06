@@ -13,4 +13,3 @@ class Basket(UserDict):
         if value < 0:
             value = 0
         super().__setitem__(key, value)
-
