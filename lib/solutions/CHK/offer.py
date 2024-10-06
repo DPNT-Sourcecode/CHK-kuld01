@@ -15,7 +15,7 @@ class BuyOffer():
     def _get_quantity(self, basket: Basket):
         return basket[self.product_code]
 
-    def calculate_cost(self, quantity: int) -> int:
+    def calculate_cost(self, basket: Basket) -> int:
         pass
 
 
@@ -57,13 +57,13 @@ class CrossBuyOffer(BuyOffer):
 
     def calculate_cost(self, basket: Basket) -> int:
         quantity = basket[self.product_code]
-        cost = price.price * (quantity - (quantity // price.quantity))
+        cost = self.price.price * (quantity - (quantity // self.price.quantity))
         return cost
 
 
 @attrs.define()
 class OfferRegistry:
-    offers = List[BuyOffer]
+    offers: List[BuyOffer]
 
     def calculate(self, basket: Basket) -> int:
         cost = 0
@@ -76,5 +76,6 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 
 

@@ -6,6 +6,7 @@ from lib.solutions.CHK import offer
 # noinspection PyUnusedLocal
 # skus = unicode string
 
+VALID_SKUS =
 
 def checkout(skus: str) -> int:
 
@@ -23,6 +24,7 @@ def checkout(skus: str) -> int:
     offer_registry.calculate()
 
     return total_cost
+
 
 
 
