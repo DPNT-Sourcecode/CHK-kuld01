@@ -89,9 +89,11 @@ class CrossBuyOffer(Offer):
         remaining_quantity = total_quantity % self.trigger_quantity
 
         products_tuple = list(self.products.items())
-        products_tuple.sort(key=lambda x: x[1], reverse=True)
+        products_tuple.sort(key=lambda x: x[1])
         track_basket = basket.copy()
         for product_code, price in products_tuple:
+            if remaining_quantity == 0:
+                break
             if track_basket[product_code] == 0:
                 continue
             cost += price
@@ -116,6 +118,7 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 
 
 
