@@ -9,7 +9,7 @@ class Price:
     price: int
 
 @attrs.define
-class BuyOffer():
+class BuyOffer:
     product_code: str
 
     def _get_quantity(self, basket: Basket):
@@ -37,10 +37,11 @@ class MultiBuyOffer(BuyOffer):
 @attrs.define()
 class FreeBuyOffer(BuyOffer):
     price: Price
+    trigger_quantity: int
 
     def calculate_cost(self, basket: Basket) -> int:
         quantity = basket[self.product_code]
-        cost = self.price.price * (quantity - (quantity // self.price.quantity))
+        cost = self.price.price * (quantity - (quantity // self.trigger_quantity))
         return cost
 
 
@@ -48,11 +49,11 @@ class FreeBuyOffer(BuyOffer):
 class CrossBuyOffer(BuyOffer):
     price: Price
     free_product_code: str
-    free_product_quantity_required: int
+    trigger_quantity: int
 
     def remove_free(self, basket: Basket) -> Basket:
         quantity = basket[self.product_code]
-        basket[self.free_product_code] -= quantity // self.free_product_quantity_required
+        basket[self.free_product_code] -= quantity // self.trigger_quantity
         return basket
 
     def calculate_cost(self, basket: Basket) -> int:
@@ -76,3 +77,4 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
