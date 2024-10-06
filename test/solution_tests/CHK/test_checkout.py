@@ -18,5 +18,3 @@ def test_checkout_invalid():
     cost = checkout_solution.checkout(skus)
 
     assert cost == -1
-
-
