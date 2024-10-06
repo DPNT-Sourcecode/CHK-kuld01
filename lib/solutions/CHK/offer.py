@@ -73,6 +73,16 @@ class CrossBuyOffer(BuyOffer):
     offer_price: int
 
     def calculate_cost(self, basket: Basket) -> int:
+
+        total_quantity = 0
+        for product_code in self.products:
+            total_quantity += basket[product_code]
+        cost = self.offer_price * (total_quantity // self.trigger_quantity)
+
+        remaining_quantity = total_quantity % self.trigger_quantity
+
+        self.products.sort(key=)
+
         quantity = basket[self.product_code]
         cost = self.price * quantity
         return cost
@@ -93,6 +103,7 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 
 
 
