@@ -103,13 +103,16 @@ class TestCrossBuyOffer:
     def test_calculate_cost(self, basket):
         basket["C"] = 1
         basket["D"] = 2
+        basket["E"] = 0
         cost = offer.CrossBuyOffer(
             products={
                 "C": 15,
-                "D": 20
+                "D": 20,
+                "E": 5,
             },
             offer_price=25,
             trigger_quantity=2
         ).calculate_cost(basket)
         assert 40 == cost
+
 

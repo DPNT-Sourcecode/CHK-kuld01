@@ -84,34 +84,20 @@ class CrossBuyOffer(Offer):
         for product_code in self.products:
             total_quantity += basket[product_code]
 
-        cost = total_quantity * self.offer_price
+        cost = (total_quantity // self.trigger_quantity) * self.offer_price
+        print(cost)
         remaining_quantity = total_quantity % self.trigger_quantity
 
         products_tuple = list(self.products.items())
         products_tuple.sort(key=lambda x: x[1], reverse=True)
+        track_basket = basket.copy()
         for product_code, price in products_tuple:
-            if basket[product_code] == 0:
+            if track_basket[product_code] == 0:
                 continue
             cost += price
             remaining_quantity -= 1
+            track_basket[product_code] -= 1
 
-
-        for product_code in self.products:
-            total_quantity += basket[product_code]
-        cost = self.offer_price * (total_quantity // self.trigger_quantity)
-
-        remaining_quantity = total_quantity % self.trigger_quantity
-
-        # calculate remaining quantity prices, favouring the customer
-        track_basket = basket.copy()
-        prices = list(self.products.values())
-        prices.sort()
-        for price in prices:
-            if track_basket[]
-            if remaining_quantity == 0:
-                break
-            cost += price
-            remaining_quantity -= 1
         return cost
 
 
@@ -130,6 +116,7 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 
 
 
