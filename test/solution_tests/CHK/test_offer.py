@@ -21,12 +21,13 @@ class TestMultiBuyOffer:
     def test_calculate_cost(self, basket):
         basket["C"] = 11
         cost = offer.MultiBuyOffer(
-            product_code = "C",
+            product_code="C",
             prices=[
                 offer.Price(1, 50),
                 offer.Price(3, 130),
                 offer.Price(5, 200),
             ]
-        )
+        ).calculate_cost(basket)
         assert cost == 450
+
 

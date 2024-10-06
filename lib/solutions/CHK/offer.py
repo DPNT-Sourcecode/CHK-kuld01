@@ -1,4 +1,4 @@
-from lib.solutions.CHK.basket import Basket
+from .basket import Basket
 import attrs
 
 from typing import List
@@ -77,4 +77,5 @@ class OfferRegistry:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 

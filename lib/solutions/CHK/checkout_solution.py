@@ -1,7 +1,7 @@
 from collections import defaultdict
 import attrs
 from typing import Protocol, List, Dict
-from lib.solutions.CHK import offer
+from . import offer
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -47,4 +47,5 @@ def checkout(skus: str) -> int:
     )
 
     return offer_registry.calculate()
+
 
