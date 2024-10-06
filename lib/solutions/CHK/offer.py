@@ -1,7 +1,7 @@
 from .basket import Basket
 import attrs
 
-from typing import List
+from typing import List, Dict
 
 @attrs.define()
 class Price:
@@ -49,7 +49,26 @@ class FreeBuyOffer(BuyOffer):
 
 
 @attrs.define()
+class FreeCrossBuyOffer(BuyOffer):
+    price: int
+    free_product_code: str
+    trigger_quantity: int
+
+    def remove_free(self, basket: Basket) -> Basket:
+        quantity = basket[self.product_code]
+        basket[self.free_product_code] -= quantity // self.trigger_quantity
+        return basket
+
+    def calculate_cost(self, basket: Basket) -> int:
+        quantity = basket[self.product_code]
+        cost = self.price * quantity
+        return cost
+
+
+
+@attrs.define()
 class CrossBuyOffer(BuyOffer):
+    products: Dict[str]
     price: int
     free_product_code: str
     trigger_quantity: int
@@ -73,11 +92,12 @@ class OfferRegistry:
         cost = 0
 
         for offer in self.offers:
-            if isinstance(offer, CrossBuyOffer):
+            if isinstance(offer, FreeCrossBuyOffer):
                 basket = offer.remove_free(basket)
 
         for offer in self.offers:
             cost += offer.calculate_cost(basket)
 
         return cost
+
 
